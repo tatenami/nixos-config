@@ -13,9 +13,9 @@
         system = "x86_64-linux";
 
         modules = [
-          ./configuration.nix
+          ./configurations/vm.nix
         ];
-      }
+      };
     };
   };
 }

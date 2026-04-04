@@ -1,7 +1,7 @@
 { config, pkgs, ... }: 
 {
   system.stateVersion = "25.11";
-  nix.setting.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   # VM 用ブートローダ
   boot.loader.grub.enable = true;
@@ -31,6 +31,11 @@
 
   environment.variables.EDITOR = "vim";
 
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+  };
+
   # hyprland
   programs.hyprland.enable = true;
 
@@ -42,5 +47,6 @@
   security.polkit.enable = true;
 
   # VM graphic
+  services.xserver.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
 }
