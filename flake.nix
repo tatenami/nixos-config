@@ -13,7 +13,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./configurations/vm.nix
+          ./hosts/vm/default.nix
         ];
       };
     };
