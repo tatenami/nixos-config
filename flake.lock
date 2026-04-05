@@ -1,5 +1,41 @@
 {
   "nodes": {
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775352303,
+        "narHash": "sha256-MdxY+LsvJQc3vKdZrBZpcBRceG2eNySKwrGohk5f6T4=",
+        "owner": "tatenami",
+        "repo": "dotfiles",
+        "rev": "6c8c9de83fe458cf0e536c1c5b9a36bf2c372115",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tatenami",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775360939,
+        "narHash": "sha256-XUBlSgUFdvTh6+K5LcI5mJu5F5L8scmJDMRiZM484TM=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "2097a5c82bdc099c6135eae4b111b78124604554",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1775002709,
@@ -34,6 +70,8 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
+        "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
