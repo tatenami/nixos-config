@@ -21,7 +21,7 @@
   # Applications
   environment.systemPackages = with pkgs; [
     kitty
-    wofi
+    rofi
     waybar
     xdg-utils
     google-chrome
