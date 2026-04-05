@@ -2,6 +2,8 @@
 # - マシンに依らず共通する項目
 { pkgs, config, ...}:
 {
+  # nix コマンド，flake の有効化
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # タイムゾーン
   time.timeZone = "Asia/Tokyo";
   # システムロケール
@@ -17,5 +19,9 @@
     ];
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  environment.sessionVariables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
 }

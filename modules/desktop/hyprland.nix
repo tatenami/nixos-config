@@ -26,5 +26,6 @@
     xdg-utils
     google-chrome
     vscode
+    mozc
   ];
 }
