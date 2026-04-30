@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   # System Version
@@ -9,8 +9,25 @@
   # - 任意の名前でOK
   networking.hostName = "nixel";
 
+  # firmware
+  hardware.firmware = with pkgs; [
+    linux-firmware
+  ];
+
   # Network
   networking.networkmanager.enable = true;
+
+  # bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
+  services.blueman.enable = true;
 
   # SSH 有効化
   services.openssh.enable = true;
@@ -24,6 +41,15 @@
     vim 
     wget 
     curl
+    # develop
+    gcc
+    gnumake
+    binutils
+    pkg-config
+    # linux header
+    linuxHeaders
+    # kernel header
+    config.boot.kernelPackages.kernel.dev
   ];
 
   environment.variables.EDITOR = "vim";
@@ -55,4 +81,11 @@
   environment.variables = {
     INPUT_METHOD = "fcitx";
   };
+
+  # font
+  # fonts = {
+  #   packages = with pkgs; [
+  #     jetbrains-mono
+  #   ];
+  # };
 }

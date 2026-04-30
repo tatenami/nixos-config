@@ -14,18 +14,31 @@
     flake = false;
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, dotfiles, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, dotfiles, ... }: 
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in 
+  {
     # VM環境
     nixosConfigurations = {
       vm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
 
         modules = [
-          ./hosts/vm/default.nix
+          ./hosts/vm
+          # home-manager
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.tatenami = import ./modules/home/default.nix;
+            home-manager.backupFileExtension = "backup";
+            
+            # user 
+            home-manager.users.tatenami = {
+              imports = [
+                ./modules/home
+              ];
+            };
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
@@ -49,6 +62,6 @@
           })
         ];
       };
-    };
+    }; # for VM setting 
   };
 }

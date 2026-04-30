@@ -6,7 +6,9 @@
     autosuggestion.enable = true; # コマンド予測
     syntaxHighlighting.enable = true; 
     # oh-my-zsh
-    oh-my-zsh.enable = true;
-    oh-my-zsh.theme = "robbyrussell";
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+    };
   };
 }
